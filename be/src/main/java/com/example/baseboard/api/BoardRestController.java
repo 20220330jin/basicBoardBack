@@ -11,12 +11,18 @@ import java.util.List;
 @RequestMapping("board")
 @CrossOrigin("http://localhost:8080")
 @RequiredArgsConstructor
-public class BoardController {
+public class BoardRestController {
 
     final BoardService boardService;
 
     @GetMapping("/boardList")
     public List<BoardDto.boardList> boardList(@ModelAttribute BoardDto.boardListParam params){
         return boardService.boardList(params);
+    }
+
+    @GetMapping("/detail")
+    public BoardDto.boardInfo boardInfo(@ModelAttribute BoardDto.boardInfoParam param){
+        return boardService.boardInfo(param);
+//        return null;
     }
 }

@@ -4,6 +4,7 @@ import com.example.baseboard.domain.Board;
 import com.example.baseboard.domain.QBoard;
 import com.example.baseboard.model.BoardDto;
 import com.querydsl.core.types.Projections;
+import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 import org.springframework.stereotype.Repository;
@@ -33,5 +34,20 @@ public class BoardRepositorySupportImpl extends QuerydslRepositorySupport implem
                 ))
                 .from(board)
                 .fetch();
+    }
+
+    @Override
+    public BoardDto.boardInfo boardInfo(Long boardId) {
+        QBoard board = QBoard.board;
+
+        final BooleanExpression isBoardId = board.id.eq(boardId);
+//        final BooleanExpression isUseYn = board
+        return jpaQueryFactory.select(Projections.constructor(BoardDto.boardInfo.class
+                                        , board.title
+                                        , board.content
+                ))
+                .from(board)
+                .where(isBoardId)
+                .fetchOne();
     }
 }

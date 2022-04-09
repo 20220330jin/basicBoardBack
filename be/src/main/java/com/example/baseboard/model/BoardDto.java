@@ -1,7 +1,10 @@
 package com.example.baseboard.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@NoArgsConstructor
 public class BoardDto {
 
     public static class boardListParam{
@@ -23,6 +26,26 @@ public class BoardDto {
                        , String content
         ){
             this.boardId = boardId;
+            this.title = title;
+            this.content = content;
+        }
+    }
+
+    @Getter
+    @Setter
+    public static class boardInfoParam{
+        private Long boardId;
+    }
+
+    @Setter
+    @Getter
+    public static class boardInfo{
+        private String title;
+        private String content;
+
+        public boardInfo(String title
+                        , String content
+        ){
             this.title = title;
             this.content = content;
         }

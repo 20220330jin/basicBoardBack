@@ -18,4 +18,13 @@ public class Board {
 
     @Column
     private String content;
+
+    public Board(Long id
+                 , String title
+                 , String content
+    ){
+        this.id = id;
+        this.title = title;
+        this.content = content;
+    }
 }

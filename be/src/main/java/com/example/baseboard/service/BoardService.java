@@ -7,4 +7,6 @@ import java.util.List;
 public interface BoardService {
 
     List<BoardDto.boardList> boardList(BoardDto.boardListParam params);
+
+    BoardDto.boardInfo boardInfo(BoardDto.boardInfoParam param);
 }

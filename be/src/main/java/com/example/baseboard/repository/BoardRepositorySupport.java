@@ -7,4 +7,6 @@ import java.util.List;
 public interface BoardRepositorySupport {
 
     List<BoardDto.boardList> boardList(BoardDto.boardListParam params);
+
+    BoardDto.boardInfo boardInfo(Long boardId);
 }
