@@ -27,12 +27,20 @@ public class BoardRepositorySupportImpl extends QuerydslRepositorySupport implem
     @Override
     public List<BoardDto.boardList> boardList(BoardDto.boardListParam params) {
         QBoard board = QBoard.board;
+
+        final BooleanExpression isUseYn = board.useYn.eq('Y');
+        final BooleanExpression isDelYn = board.delYn.eq('N');
+
         return jpaQueryFactory.select(Projections.constructor(BoardDto.boardList.class
                                                             , board.id
                                                             , board.title
                                                             , board.content
+                                                            , board.createDateTime
                 ))
                 .from(board)
+                .where(isUseYn
+                        .and(isDelYn)
+                )
                 .fetch();
     }
 
@@ -41,13 +49,20 @@ public class BoardRepositorySupportImpl extends QuerydslRepositorySupport implem
         QBoard board = QBoard.board;
 
         final BooleanExpression isBoardId = board.id.eq(boardId);
-//        final BooleanExpression isUseYn = board
+
+        final BooleanExpression isUseYn = board.useYn.eq('Y');
+        final BooleanExpression isDelYn = board.delYn.eq('N');
+
         return jpaQueryFactory.select(Projections.constructor(BoardDto.boardInfo.class
                                         , board.title
                                         , board.content
+                                        , board.createDateTime
                 ))
                 .from(board)
-                .where(isBoardId)
+                .where(isBoardId
+                        .and(isUseYn)
+                        .and(isDelYn)
+                )
                 .fetchOne();
     }
 }

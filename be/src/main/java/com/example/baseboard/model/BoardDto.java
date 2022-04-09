@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @NoArgsConstructor
 public class BoardDto {
 
@@ -21,13 +23,17 @@ public class BoardDto {
 
         private String content;
 
+        private LocalDateTime createDateTime;
+
         public boardList(Long boardId
-                       , String title
-                       , String content
+                        , String title
+                        , String content
+                        , LocalDateTime createDateTime
         ){
             this.boardId = boardId;
             this.title = title;
             this.content = content;
+            this.createDateTime = createDateTime;
         }
     }
 
@@ -42,12 +48,15 @@ public class BoardDto {
     public static class boardInfo{
         private String title;
         private String content;
+        private LocalDateTime createDateTime;
 
         public boardInfo(String title
-                        , String content
+                         , String content
+                         , LocalDateTime createDateTime
         ){
             this.title = title;
             this.content = content;
+            this.createDateTime = createDateTime;
         }
     }
 }

@@ -1,12 +1,17 @@
 package com.example.baseboard.domain;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.time.LocalDateTime;
 
 @Entity
-public class Board {
+@Getter
+public class Board extends BaseEntity {
 
     @Id
     @GeneratedValue
@@ -19,10 +24,18 @@ public class Board {
     @Column
     private String content;
 
-    public Board(Long id
+    public Board(){};
+
+    public Board(Long createUserId
+                 , LocalDateTime createDateTime
+                 , LocalDateTime updateDateTime
+                 , Character useYn
+                 , Character delYn
+                 , Long id
                  , String title
                  , String content
     ){
+        super(createUserId, createDateTime, updateDateTime, useYn, delYn);
         this.id = id;
         this.title = title;
         this.content = content;
