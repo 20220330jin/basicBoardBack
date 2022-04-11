@@ -1,5 +1,6 @@
 package com.example.baseboard.model;
 
+import com.example.baseboard.domain.Board;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -57,6 +58,21 @@ public class BoardDto {
             this.title = title;
             this.content = content;
             this.createDateTime = createDateTime;
+        }
+    }
+
+    @Getter
+    public static class boardWriteParam{
+        private String title;
+        private String content;
+    }
+
+    @Setter
+    @Getter
+    public static class boardWrite{
+        private Long id;
+        public boardWrite(Board board){
+            this.id = board.getId();
         }
     }
 }

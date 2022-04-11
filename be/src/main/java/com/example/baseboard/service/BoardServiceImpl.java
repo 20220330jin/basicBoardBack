@@ -1,6 +1,7 @@
 package com.example.baseboard.service;
 
 import com.example.baseboard.model.BoardDto;
+import com.example.baseboard.repository.BoardRepositoryManager;
 import com.example.baseboard.repository.BoardRepositorySupport;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,8 @@ public class BoardServiceImpl implements BoardService {
 
     final BoardRepositorySupport boardRepositorySupport;
 
+    final BoardRepositoryManager boardRepositoryManager;
+
     @Override
     public List<BoardDto.boardList> boardList(BoardDto.boardListParam params) {
         return boardRepositorySupport.boardList(params);
@@ -29,5 +32,10 @@ public class BoardServiceImpl implements BoardService {
         }
         Long boardId = param.getBoardId();
         return boardRepositorySupport.boardInfo(boardId);
+    }
+
+    @Override
+    public BoardDto.boardWrite boardWrite(BoardDto.boardWriteParam param) {
+        return boardRepositoryManager.boardWrite(param);
     }
 }

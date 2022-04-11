@@ -25,4 +25,9 @@ public class BoardRestController {
         return boardService.boardInfo(param);
 //        return null;
     }
+
+    @PostMapping("/boardWrite")
+    public BoardDto.boardWrite boardWrite(@RequestBody BoardDto.boardWriteParam param){
+        return boardService.boardWrite(param);
+    }
 }

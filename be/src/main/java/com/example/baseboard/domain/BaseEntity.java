@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
@@ -22,16 +23,16 @@ public abstract class BaseEntity {
     protected LocalDateTime createDateTime;
 
     @Column
-    @CreationTimestamp
+    @UpdateTimestamp
     protected LocalDateTime updateDateTime;
 
     @Column(nullable = false)
     @ColumnDefault("'Y'")
-    protected Character useYn;
+    protected char useYn = 'Y';
 
     @Column(nullable = false)
     @ColumnDefault("'N'")
-    protected Character delYn;
+    protected char delYn = 'N';
 
     protected BaseEntity(Long createUserId
             , LocalDateTime createDateTime
