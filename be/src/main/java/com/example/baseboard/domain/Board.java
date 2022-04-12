@@ -48,7 +48,18 @@ public class Board extends BaseEntity {
         this.content = param.getContent();
     }
 
+    public Board(Board board, BoardDto.boardUpdateParam param){
+        board.title = param.getTitle();
+        board.content = param.getContent();
+        board.updateDateTime = LocalDateTime.now();
+    }
+
+
     public static Supplier<Board> create(BoardDto.boardWriteParam param){
         return () -> new Board(param);
+    }
+
+    public static Supplier<Board> update(Board board, BoardDto.boardUpdateParam param){
+        return () -> new Board(board, param);
     }
 }

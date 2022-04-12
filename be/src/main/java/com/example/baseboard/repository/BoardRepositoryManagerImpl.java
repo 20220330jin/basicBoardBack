@@ -26,4 +26,10 @@ public class BoardRepositoryManagerImpl extends QuerydslRepositorySupport implem
         entityManager.persist(board);
         return new BoardDto.boardWrite(board);
     }
+
+    @Override
+    public BoardDto.boardUpdate boardUpdate(Board board, BoardDto.boardUpdateParam param) {
+        Board updatedBoard = board.update(board, param).get();
+        return new BoardDto.boardUpdate(updatedBoard);
+    }
 }

@@ -11,4 +11,6 @@ public interface BoardService {
     BoardDto.boardInfo boardInfo(BoardDto.boardInfoParam param);
 
     BoardDto.boardWrite boardWrite(BoardDto.boardWriteParam param);
+
+    BoardDto.boardUpdate boardUpdate(BoardDto.boardUpdateParam param);
 }

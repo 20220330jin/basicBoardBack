@@ -65,4 +65,22 @@ public class BoardRepositorySupportImpl extends QuerydslRepositorySupport implem
                 )
                 .fetchOne();
     }
+
+    @Override
+    public Board findBoardByBoardId(Long boardId) {
+        QBoard board = QBoard.board;
+
+        final BooleanExpression isBoardId = board.id.eq(boardId);
+
+        final BooleanExpression isUseYn = board.useYn.eq('Y');
+        final BooleanExpression isDelYn = board.delYn.eq('N');
+        return jpaQueryFactory.select(board)
+                .from(board)
+                .where(isBoardId
+                        .and(isUseYn)
+                        .and(isDelYn)
+                )
+                .fetchOne();
+
+    }
 }

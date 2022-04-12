@@ -75,4 +75,21 @@ public class BoardDto {
             this.id = board.getId();
         }
     }
+
+    @Getter
+    public static class boardUpdateParam{
+        private Long boardId;
+        private String title;
+        private String content;
+    }
+
+    @Setter
+    @Getter
+    public static class boardUpdate{
+        private Long boardId;
+
+        public boardUpdate(Board board){
+            this.boardId = board.getId();
+        }
+    }
 }

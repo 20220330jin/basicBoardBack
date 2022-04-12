@@ -30,4 +30,9 @@ public class BoardRestController {
     public BoardDto.boardWrite boardWrite(@RequestBody BoardDto.boardWriteParam param){
         return boardService.boardWrite(param);
     }
+
+    @PostMapping("/boardUpdate")
+    public BoardDto.boardUpdate boardUpdate(@RequestBody BoardDto.boardUpdateParam param){
+        return boardService.boardUpdate(param);
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.baseboard.service;
 
+import com.example.baseboard.domain.Board;
 import com.example.baseboard.model.BoardDto;
 import com.example.baseboard.repository.BoardRepositoryManager;
 import com.example.baseboard.repository.BoardRepositorySupport;
@@ -37,5 +38,18 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public BoardDto.boardWrite boardWrite(BoardDto.boardWriteParam param) {
         return boardRepositoryManager.boardWrite(param);
+    }
+
+    @Override
+    public BoardDto.boardUpdate boardUpdate(BoardDto.boardUpdateParam param) {
+        Optional<Long> checkId = Optional.ofNullable(param.getBoardId());
+        if(!checkId.isPresent()){
+
+        }
+        Long boardId = param.getBoardId();
+        String title = param.getTitle();
+        String content = param.getContent();
+        Board board = boardRepositorySupport.findBoardByBoardId(boardId);
+        return boardRepositoryManager.boardUpdate(board, param);
     }
 }
