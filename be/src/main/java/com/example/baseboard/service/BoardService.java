@@ -13,4 +13,6 @@ public interface BoardService {
     BoardDto.boardWrite boardWrite(BoardDto.boardWriteParam param);
 
     BoardDto.boardUpdate boardUpdate(BoardDto.boardUpdateParam param);
+
+    BoardDto.boardDelete boardDelete(BoardDto.boardDeleteParam param);
 }

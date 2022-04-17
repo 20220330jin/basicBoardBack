@@ -52,4 +52,16 @@ public class BoardServiceImpl implements BoardService {
         Board board = boardRepositorySupport.findBoardByBoardId(boardId);
         return boardRepositoryManager.boardUpdate(board, param);
     }
+
+    @Override
+    public BoardDto.boardDelete boardDelete(BoardDto.boardDeleteParam param) {
+        Optional<Long> checkId = Optional.ofNullable(param.getBoardId());
+        if(!checkId.isPresent()){
+
+        }
+        Long boardId = param.getBoardId();
+        Board board = boardRepositorySupport.findBoardByBoardId(boardId);
+
+        return boardRepositoryManager.boardDelete(board);
+    }
 }

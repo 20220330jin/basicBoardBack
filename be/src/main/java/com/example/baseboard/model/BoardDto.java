@@ -92,4 +92,19 @@ public class BoardDto {
             this.boardId = board.getId();
         }
     }
+
+    @Getter
+    public static class boardDeleteParam {
+        private Long boardId;
+    }
+
+    @Setter
+    @Getter
+    public static class boardDelete{
+        private Long boardId;
+
+        public boardDelete(Board board){
+            this.boardId = board.getId();
+        }
+    }
 }

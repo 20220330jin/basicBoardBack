@@ -32,4 +32,10 @@ public class BoardRepositoryManagerImpl extends QuerydslRepositorySupport implem
         Board updatedBoard = board.update(board, param).get();
         return new BoardDto.boardUpdate(updatedBoard);
     }
+
+    @Override
+    public BoardDto.boardDelete boardDelete(Board board) {
+        Board deleteBoard = board.delete(board).get();
+        return new BoardDto.boardDelete(deleteBoard);
+    }
 }

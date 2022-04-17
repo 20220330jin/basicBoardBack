@@ -35,4 +35,10 @@ public class BoardRestController {
     public BoardDto.boardUpdate boardUpdate(@RequestBody BoardDto.boardUpdateParam param){
         return boardService.boardUpdate(param);
     }
+
+    // 글 삭제 기능
+    @PutMapping("/boardDelete")
+    public BoardDto.boardDelete boardDelete(@RequestBody BoardDto.boardDeleteParam param){
+        return boardService.boardDelete(param);
+    }
 }

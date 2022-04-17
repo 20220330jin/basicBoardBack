@@ -54,6 +54,12 @@ public class Board extends BaseEntity {
         board.updateDateTime = LocalDateTime.now();
     }
 
+    public Board(Board board){
+        board.delYn = 'Y';
+        board.useYn = 'N';
+        board.updateDateTime = LocalDateTime.now();
+    }
+
 
     public static Supplier<Board> create(BoardDto.boardWriteParam param){
         return () -> new Board(param);
@@ -62,4 +68,9 @@ public class Board extends BaseEntity {
     public static Supplier<Board> update(Board board, BoardDto.boardUpdateParam param){
         return () -> new Board(board, param);
     }
+
+    public static Supplier<Board> delete(Board board){
+        return () -> new Board(board);
+     }
+
 }
